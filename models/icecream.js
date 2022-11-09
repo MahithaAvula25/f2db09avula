@@ -5,5 +5,4 @@ const icecreamSchema = mongoose.Schema({
     price:Number 
 }) 
  
-module.exports = mongoose.model("icecream", 
-icecreamSchema) 
+module.exports = mongoose.model("icecream", icecreamSchema) 
