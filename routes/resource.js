@@ -13,7 +13,7 @@ router.get('/', api_controller.api);
 /// COSTUME ROUTES /// 
  
 // POST request for creating a Costume.  
-router.post('/', icecream_controller.icecream_create_post); 
+router.post('/icecreams', icecream_controller.icecream_create_post); 
  
 // DELETE request to delete Costume. 
 router.delete('/icecreams/:id', icecream_controller.icecream_delete); 

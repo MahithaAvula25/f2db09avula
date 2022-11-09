@@ -71,6 +71,7 @@ exports.icecream_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
+ 
 // Handle Costume create on POST. 
 exports.icecream_create_post = async function(req, res) { 
     console.log(req.body) 
@@ -79,9 +80,9 @@ exports.icecream_create_post = async function(req, res) {
     // Even though bodies can be in many different formats, we will be picky 
     // and require that it be a json object 
     // {"costume_type":"goat", "cost":12, "size":"large"} 
-    document.icecream_type = req.body.icecream_type; 
-    document.cost = req.body.cost; 
-    document.size = req.body.size; 
+    document.name = req.body.name; 
+    document.flavor = req.body.flavor; 
+    document.price = req.body.price; 
     try{ 
         let result = await document.save(); 
         res.send(result); 
