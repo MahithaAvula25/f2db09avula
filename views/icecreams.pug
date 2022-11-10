@@ -2,9 +2,9 @@ extends layout
 
 block content
   h1= title
-   - let items = results; 
-   button.btn( class="btn-light", onclick= `pressme(\"/icecream/create\")` ) Create a new Item
-    table(class="table table-stripped table-bordered")
+  - let items = results
+  button.btn( class="btn-light ml-1", onclick= `pressme(\"/icecream/create\")` ) Create a new Item
+  table(class="table table-stripped table-bordered")
         thead(style="background-color:pink;color:white") 
             tr
                 td Item ID
@@ -14,7 +14,7 @@ block content
                 td Inspect 
                 td Update 
                 td Delete
-        tbody
+            tbody
             
             each item in items
                 tr
@@ -23,11 +23,11 @@ block content
                     td #{item.flavor}
                     td #{item.price}
                     td 
-                      button.btn( class="btn-light ", onclick= `click(\"/icecream/update/?id=${item._id}\")` ) Inspect
+                      button.btn( class="btn-info ", onclick= `click(\"/icecream/update/?id=${item._id}\")` ) Inspect
                     td 
-                      button.btn( class="btn-light", onclick= `click(\"/icecream/detail/?id=${item._id}\")` ) Update
+                      button.btn( class="btn-info", onclick= `click(\"/icecream/detail/?id=${item._id}\")` ) Update
                     td 
-                      button.btn( class="btn-light", onclick= `click(\"/icecream/delete/?id=${item._id}\")` ) Delete 
+                      button.btn( class="btn-info", onclick= `click(\"/icecream/delete/?id=${item._id}\")` ) Delete 
                 script. 
                   function pressme(path){ 
                     window.location.href=path 
@@ -36,7 +36,7 @@ block content
 
 
 
-    - let icecreams   =[{name:"kulfi",flavor:"badam",price:10},{name:"chocobar",flavor:"vanilla",price:20},{name:"cone",flavor:"chocolate",price:50}]
+  - let icecreams=[{name:"kulfi",flavor:"badam",price:10},{name:"chocobar",flavor:"vanilla",price:20},{name:"cone",flavor:"chocolate",price:50}]
   div(class="container-fluid")
   div(class="row")
             
