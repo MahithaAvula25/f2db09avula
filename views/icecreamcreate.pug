@@ -3,14 +3,16 @@ extends layout
 block content 
   h1= title 
  
-  form(id='icecreamForm', action="/resource/icecreams", method="POST") 
-    div.form-group 
+  form(id='icecreamForm', action="/resource/icecreams", method="POST",class="am") 
+    div(class="am").form-group
+      img(src='/images/chocobar2.jpg')
+    div(class="am at").form-group 
         label.icecreamAttr(for='icecream_type') icecream name
         input#name(type='text', name='name') 
-    div.form-group 
+    div(class="am at").form-group 
         label.icecreamAttr(for='size') icecream flavor
         input#flavor(type='text', name='flavor') 
-    div.form-group 
+    div(class="am at").form-group 
         label.icecreamAttr(for='cost') icecream price
         input#price(type='number', name='price') 
     input(type="submit") 

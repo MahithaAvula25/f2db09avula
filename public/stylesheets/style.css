@@ -10,3 +10,11 @@ a {
   background-color: aquamarine; 
   width: 120px; 
 } 
+.am{
+  text-align:center;
+  padding: 20px;
+  background-color: pink;
+}
+.at{
+  background-color: cadetblue;
+}
