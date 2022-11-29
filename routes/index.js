@@ -2,6 +2,7 @@ var express = require('express');
 var passport = require('passport'); 
 var router = express.Router();
 var Account = require('../models/account'); 
+var icecream_controller=require('../controllers/icecream');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -19,7 +20,7 @@ router.post('/register', function(req, res) {
         return res.render('register', { title: 'Registration',  
                   message: 'Registration error', account : req.body.username }) 
       } 
-      if(user == {} ){ 
+      if(user){ 
         return res.render('register', { title: 'Registration',  
                    message: 'Existing User', account : req.body.username }) 
       } 
@@ -49,11 +50,16 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
   res.redirect('/'); 
 }); 
  
-router.get('/logout', function(req, res) { 
-    req.logout(); 
-    res.redirect('/'); 
+router.get('/logout', function(req, res) {
+  req.logout(err=>{
+    if(err)
+    {
+     return err;
+    }
+    else
+    res.redirect('/');
+  });
 }); 
- 
 router.get('/ping', function(req, res){ 
     res.status(200).send("pong!"); 
 }); 

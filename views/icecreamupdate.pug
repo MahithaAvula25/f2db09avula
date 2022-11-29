@@ -1,46 +1,45 @@
-extends layout 
- 
-block content 
-  h1= title 
-  if(toShow==null)
-   h2 No Instance to update 
-  else 
-    - let icecreamid = toShow._id 
-    - let name = toShow.name 
-    - let flavor = toShow.flavor
-    - let price = toShow.price
-    
-    div.row(class='mb-2') 
-      div.mr-1 ID is 
-      div #{icecreamid} 
-    - let actionid = "/resource/icecreams/" + icecreamid 
-    form(id='icecreamForm', action= actionid, method="PUT") 
-      div.form-group 
-          label.icecreamAttr(for='name') icecream name
-          input#name(type='text', name='name', value= name ) 
-      div.form-group 
-          label.icecreamAttr(for='flavor') icecream flavor
-          input#flavor(type='text', name='flavor', value= flavor ) 
-      div.form-group 
-          label.icecreamAttr(for='price') icecream price
-          input#price(type='number', name='price', value= price ) 
-      input(type="submit") 
+extends layout
+
+block content
+  h1(id="title")= title
+
+  if (toShow == null)
+    h2 No instance to delete
+  else
+  - let icecreamsid = toShow._id
+  - let name = toShow.name
+  - let flavor = toShow.flavor
+  - let price = toShow.price
   
-    script. 
-      document.forms['icecreamForm'].addEventListener('submit', (event) => { 
-        event.preventDefault(); 
-        // TODO do something here to show user that form is being submitted 
-        fetch(event.target.action, { 
-          method: 'PUT', 
-          body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
-        }).then((resp) => { 
-          return resp.json(); // or resp.text() or whatever the server sends 
-        }).then((body) => { 
-          alert("Update succeded") 
-          // TODO handle body 
-        }).catch((error) => { 
-          // TODO handle error 
-          alert("Update failed " + error ) 
-        }); 
-      }); 
-  
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{icecreamsid}
+  - let actionid = "/resource/icecreams/" + icecreamsid
+  form(id='icecreamsForm', action= actionid, method="PUT")
+    div.form-group
+        label.icecreamsAttr(for='name') icecream name
+        input#name(type='text', name='name', value= name )
+    div.form-group
+        label.icecreamsAttr(for='flavor') icecream flavor
+        input#flavor(type='text', name='flavor', value= flavor )
+    div.form-group
+        label.icecreamsAttr(for='price') icecream price
+        input#price(type='number', name='price', value= price )
+    input(type="submit")
+  script.
+    document.forms['icecreamsForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error )
+      });
+    });
